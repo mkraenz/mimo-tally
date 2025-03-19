@@ -2,7 +2,7 @@ import { VStack } from "@chakra-ui/react";
 import { SignIn } from "@clerk/nextjs";
 import { FC } from "react";
 
-const LoginForm: FC = (props) => {
+const LoginForm: FC = () => {
   return (
     <VStack gap={16} minH={"80svh"} justify={"center"} as={"article"}>
       <SignIn />

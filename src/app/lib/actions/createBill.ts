@@ -10,9 +10,9 @@ const CreateBillSchema = z.object({
   amount: z.coerce.number(),
   currency: z.enum(["JPY", "EUR"]),
 });
-type CreateBillDto = z.infer<typeof CreateBillSchema>;
+type _CreateBillDto = z.infer<typeof CreateBillSchema>;
 
-const env = EnvVarSchema.parse({
+const _env = EnvVarSchema.parse({
   // explicitly writing each property instead of just passing process.env because nextjs does static string substitution for env vars
 });
 
@@ -23,7 +23,7 @@ export default async function createBill(formData: FormData) {
     purpose: formData.get("purpose"),
   };
   const data = CreateBillSchema.parse(rawFormData);
-  console.log("Valid request received", rawFormData);
+  console.log("Valid request received", data);
 
   try {
     // await sendEmailToMeAndConfirmationToContact(data);

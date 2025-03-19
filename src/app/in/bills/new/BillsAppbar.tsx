@@ -12,7 +12,7 @@ const BackButton = () => {
     <IconButton
       asChild
       variant={"ghost"}
-      aria-label="back"
+      aria-label={"back"}
       onClick={() => router.back()}
     >
       <LuChevronLeft />
@@ -22,7 +22,7 @@ const BackButton = () => {
 
 const BillsAppBar: FC = () => {
   return (
-    <HStack width="100%">
+    <HStack width={"100%"}>
       <BackButton />
       <Heading>Add bill</Heading>
     </HStack>

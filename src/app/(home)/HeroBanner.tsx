@@ -15,7 +15,7 @@ const HeroBanner = () => {
         flexWrap={"wrap"}
         data-animated
         justify={"center"}
-        minW="100%"
+        minW={"100%"}
       >
         <GoToSignIn />
       </HStack>

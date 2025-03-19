@@ -36,7 +36,7 @@ const TallyItem: FC<TallyItemProps> = ({
   separator,
 }) => (
   <>
-    <HStack w="full" justify={"space-between"}>
+    <HStack w={"full"} justify={"space-between"}>
       <HStack gap={8}>
         {/* the box stops the icon from shrinking when the purpose text is too long */}
         <Box>
@@ -44,7 +44,7 @@ const TallyItem: FC<TallyItemProps> = ({
         </Box>
         <VStack align={"start"} gap={0}>
           <Text lineClamp={1}>{purpose}</Text>
-          <Text color="fg.muted">{formatDateToLocal(date)}</Text>
+          <Text color={"fg.muted"}>{formatDateToLocal(date)}</Text>
         </VStack>
       </HStack>
       <Text color={amountToColor(amount)}>
@@ -106,7 +106,7 @@ const TallyPage = () => {
           amount={totalAmountDue.amount}
           currency={totalAmountDue.currency}
         />
-        <Separator size={"lg"} w="full" />
+        <Separator size={"lg"} w={"full"} />
         <VStack gap={1} p={0} width={{ md: "md", base: "xs" }}>
           {bills.map((d, i) => (
             <TallyItem {...d} key={d.id} separator={i !== bills.length - 1} />
@@ -114,7 +114,7 @@ const TallyPage = () => {
         </VStack>
       </VStack>
       <Button minW={"xs"} asChild>
-        <Link href="/in/bills/new">Add bill</Link>
+        <Link href={"/in/bills/new"}>Add bill</Link>
       </Button>
     </VStack>
   );

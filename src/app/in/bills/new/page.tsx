@@ -3,9 +3,7 @@ import { FC } from "react";
 import BillsAppBar from "./BillsAppbar";
 import NewBillForm from "./NewBillForm";
 
-type Props = {};
-
-const AddBill: FC<Props> = (props) => {
+const AddBill: FC = () => {
   return (
     <VStack as={"main"} px={{ md: 12, base: 4 }} gap={8}>
       <BillsAppBar />
