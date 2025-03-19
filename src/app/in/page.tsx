@@ -1,9 +1,19 @@
 import { formatCurrency, formatDateToLocal } from "@/app/common/formatting";
 import { amountToColor } from "@/app/lib/amountToColor";
 import { Currency } from "@/app/lib/Currency";
-import { Box, Button, HStack, Separator, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  HStack,
+  IconButton,
+  Separator,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { SignOutButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { FC } from "react";
+import { LuLogOut } from "react-icons/lu";
 import { TfiImport } from "react-icons/tfi";
 import TallyAppBar from "./TallyAppbar";
 
@@ -116,6 +126,13 @@ const TallyPage = () => {
       <Button minW={"xs"} asChild>
         <Link href={"/in/bills/new"}>Add bill</Link>
       </Button>
+      <Box mt="auto" alignSelf={"start"}>
+        <SignOutButton>
+          <IconButton aria-label="sign out" variant={"outline"}>
+            <LuLogOut />
+          </IconButton>
+        </SignOutButton>
+      </Box>
     </VStack>
   );
 };
