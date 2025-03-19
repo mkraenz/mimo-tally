@@ -126,9 +126,9 @@ const TallyPage = () => {
       <Button minW={"xs"} asChild>
         <Link href={"/in/bills/new"}>Add bill</Link>
       </Button>
-      <Box mt="auto" alignSelf={"start"}>
+      <Box mt={"auto"} alignSelf={"start"}>
         <SignOutButton>
-          <IconButton aria-label="sign out" variant={"outline"}>
+          <IconButton aria-label={"sign out"} variant={"outline"}>
             <LuLogOut />
           </IconButton>
         </SignOutButton>
