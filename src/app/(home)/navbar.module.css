@@ -1,0 +1,4 @@
+/* if the logo is some anscestor of an element in with the data-color-scheme attribute set to dark, then applies the css rules */
+[data-color-scheme="dark"] .logo {
+  filter: invert(1);
+}

@@ -1,0 +1,59 @@
+{
+  "name": "MiMos Tally",
+  "short_name": "MiMos Tally",
+  "description": "",
+  "id": "tally.kraenz.eu/?homescreen=1",
+  "start_url": "/?homescreen=1",
+  "lang": "en",
+  "scope": "/",
+  "theme_color": "#F50057",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "categories": [],
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/maskable-solid-icon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-narrow-dark-540x720.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/screenshot-narrow-light-540x720.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/screenshot-wide-light-1024x600.png",
+      "type": "image/png",
+      "sizes": "1024x600",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/screenshot-wide-dark-1024x600.png",
+      "type": "image/png",
+      "sizes": "1024x600",
+      "form_factor": "wide"
+    }
+  ]
+}
