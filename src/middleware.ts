@@ -1,4 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import mimoEnv from "./app/lib/environment";
 
 const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/"]);
 
@@ -8,7 +9,10 @@ export default clerkMiddleware(
       await auth.protect();
     }
   },
-  { afterSignInUrl: "/in" }
+  {
+    afterSignInUrl: "/in",
+    authorizedParties: [mimoEnv.MIMO_AUTHORIZED_PARTY],
+  },
 );
 
 export const config = {

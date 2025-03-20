@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Links
+
+- [GCP Project for OAuth2 Setup](https://console.cloud.google.com/auth/audience?inv=1&invt=AbsfpA&project=mimo-tally-2025)
+- [Clerk Identity Provider Dev Tenant](https://dashboard.clerk.com/apps/app_2uWXcEdgCyX4nfdefVuA0DFl1zg/instances/ins_2uWXcGxpgnfRYTaLdD6vkNXJm60/user-authentication/sso-connections)
+- [MiMos Tally](https://tally.kraenz.eu)
+- <https://tally.kraenz.eu/terms-of-service> TODO
+- <https://tally.kraenz.eu/privacy> TODO

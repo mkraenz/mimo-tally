@@ -3,18 +3,12 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-const EnvVarSchema = z.object({});
-
 const CreateBillSchema = z.object({
   purpose: z.string().trim().nonempty(),
   amount: z.coerce.number(),
   currency: z.enum(["JPY", "EUR"]),
 });
 type _CreateBillDto = z.infer<typeof CreateBillSchema>;
-
-const _env = EnvVarSchema.parse({
-  // explicitly writing each property instead of just passing process.env because nextjs does static string substitution for env vars
-});
 
 export default async function createBill(formData: FormData) {
   const rawFormData = {
