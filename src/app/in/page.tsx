@@ -108,7 +108,7 @@ const TallyPage = () => {
   return (
     <VStack as={"main"} px={{ md: 12, base: 4 }} gap={8}>
       <TallyAppBar
-        totalAmountDue={totalAmountDue}
+        amountDue={totalAmountDue}
         payButtonDisabled={totalAmountDue.amount >= 0}
       />
       <VStack width={{ md: "md", base: "xs" }}>
@@ -123,7 +123,7 @@ const TallyPage = () => {
           ))}
         </VStack>
       </VStack>
-      <Button minW={"xs"} asChild>
+      <Button w={"xs"} asChild>
         <Link href={"/in/bills/new"}>Add bill</Link>
       </Button>
       <Box mt={"auto"} alignSelf={"start"}>

@@ -12,8 +12,9 @@ const SubmitButton = () => {
   return (
     <Button
       type={"submit"}
-      width={{ base: "full", md: "200px" }}
+      width={"xs"}
       loading={pending}
+      mx={"auto"}
       mt={"auto"}
     >
       Submit
