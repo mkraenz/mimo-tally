@@ -1,3 +1,5 @@
+"use client";
+
 import { formatCurrency, formatDateToLocal } from "@/app/common/formatting";
 import { amountToColor } from "@/app/lib/amountToColor";
 import { Currency } from "@/app/lib/Currency";
@@ -10,7 +12,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { SignOutButton } from "@clerk/nextjs";
+import { SignOutButton, useAuth } from "@clerk/nextjs";
 import Link from "next/link";
 import { FC } from "react";
 import { LuLogOut } from "react-icons/lu";
@@ -104,7 +106,13 @@ const bills: Bill[] = [
 ];
 
 const TallyPage = () => {
+  const { getToken } = useAuth();
+
   const totalAmountDue = { amount: -26.21, currency: "EUR" as Currency };
+  const logJwt = async () => {
+    const token = await getToken();
+    console.log("JWT Token:", token);
+  };
   return (
     <VStack as={"main"} px={{ md: 12, base: 4 }} gap={8}>
       <TallyAppBar
@@ -125,6 +133,9 @@ const TallyPage = () => {
       </VStack>
       <Button w={"xs"} asChild>
         <Link href={"/in/bills/new"}>Add bill</Link>
+      </Button>
+      <Button w={"xs"} onClick={logJwt}>
+        Log JWT
       </Button>
       <Box mt={"auto"} alignSelf={"start"}>
         <SignOutButton>
