@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/react";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { FC } from "react";
-import { content } from "../../content";
+import { content } from "@/content";
 
 const GoToSignIn: FC = async () => {
   const { userId } = await auth();

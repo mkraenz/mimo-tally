@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { FC, PropsWithChildren } from "react";
 import { LuPlus, LuScale, LuX } from "react-icons/lu";
-import { formatCurrency } from "../../common/formatting";
+import { formatCurrency } from "@/app/common/formatting";
 import { useParams } from "next/navigation";
 import {
   useApiFetchCreateSettlement,

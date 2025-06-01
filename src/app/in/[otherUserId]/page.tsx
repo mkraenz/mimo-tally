@@ -19,7 +19,7 @@ import { useParams } from "next/navigation";
 import { FC, useEffect, useMemo, useState } from "react";
 import { LuLogOut } from "react-icons/lu";
 import { TfiExport, TfiImport } from "react-icons/tfi";
-import { useApiFetchDisbursementsWithUser } from "../../../hooks/api/useApiFetch";
+import { useApiFetchDisbursementsWithUser } from "@/hooks/api/useApiFetch";
 import TallyAppBar from "./TallyAppbar";
 
 type TallyItemProps = {
