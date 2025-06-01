@@ -59,4 +59,6 @@ interface ApiSettlement {
   updated_at: string;
 }
 export const useApiFetchCreateSettlement = () =>
-  useApiFetch<ApiSettlement>("/api/v1/settlements");
+  useApiFetch<ApiSettlement>("/api/v1/settlements/");
+export const useApiFetchCreateDisbursement = () =>
+  useApiFetch<ApiDisbursement>("/api/v1/disbursements/");

@@ -2,7 +2,10 @@
 
 import { Field } from "@/components/ui/field";
 import { InputGroup } from "@/components/ui/input-group";
-import { useApiFetch, useApiFetchUserMe } from "@/hooks/api/useApiFetch";
+import {
+  useApiFetchCreateDisbursement,
+  useApiFetchUserMe,
+} from "@/hooks/api/useApiFetch";
 import { Button, Fieldset, Input, NativeSelect } from "@chakra-ui/react";
 import { useParams, useRouter } from "next/navigation";
 import { FC, FormEvent, useState } from "react";
@@ -48,7 +51,7 @@ const NewBillForm = () => {
   const [purpose, setPurpose] = useState("");
   const [currency, setCurrency] = useState("EUR");
   const [amount, setAmount] = useState<number>();
-  const createDisbursement = useApiFetch("/api/v1/disbursements");
+  const createDisbursement = useApiFetchCreateDisbursement();
   const fetchMe = useApiFetchUserMe();
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -56,10 +59,6 @@ const NewBillForm = () => {
     const me = await fetchMe();
     await createDisbursement({
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
       body: JSON.stringify({
         paying_party_id: me.id,
         on_behalf_of_party_id: otherUserId,
