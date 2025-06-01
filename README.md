@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mimo Tally Frontend
+
+Mimo Tally is an app so you and your loved ones can easily keep a list of who owes what amount of money to whom. Once you've paid outside the app (cash or banking), you mark your tally as settled.
+
+This is a **very quick and dirty prototype** for Mimo Tally. I am not using nextjs the way it should be used. Normally, most of the api requests would be part of api routes but due to suddenly switching to an external python backend for training purposes, I am now doing a weird and clunky SPA within Next - without ejecting. Certainly needs a rework in time.
 
 ## Getting Started
 

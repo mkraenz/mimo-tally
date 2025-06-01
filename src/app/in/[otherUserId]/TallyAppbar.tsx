@@ -14,21 +14,47 @@ import {
 import Link from "next/link";
 import { FC, PropsWithChildren } from "react";
 import { LuPlus, LuScale, LuX } from "react-icons/lu";
-import { formatCurrency } from "../common/formatting";
+import { formatCurrency } from "../../common/formatting";
+import { useParams } from "next/navigation";
+import {
+  useApiFetchCreateSettlement,
+  useApiFetchUserMe,
+} from "@/hooks/api/useApiFetch";
 
 type SettleDialogProps = PropsWithChildren & {
   amountDue: { amount: number; currency: Currency };
   receiver: string;
+  affectedDisbursementIds: string[];
 };
 
 const SettleDialog: FC<SettleDialogProps> = ({
   children,
   amountDue,
   receiver,
+  affectedDisbursementIds: settledDisbursementIds,
 }) => {
-  const { amount, currency } = amountDue;
+  const { otherUserId } = useParams<{ otherUserId: string }>();
+  const fetchMe = useApiFetchUserMe();
+  const createSettlement = useApiFetchCreateSettlement();
 
-  const formattedAmount = formatCurrency("de-DE", -amount, currency);
+  const handlePayment = async () => {
+    const me = await fetchMe();
+    await createSettlement({
+      method: "POST",
+      body: JSON.stringify({
+        settled_disbursement_ids: settledDisbursementIds,
+        receiving_party_id: otherUserId,
+        sending_party_id: me.id,
+        settled_at: new Date().toISOString(),
+        amount_paid: Math.abs(amountDue.amount),
+        currency: amountDue.currency,
+      }),
+    });
+    window.location.reload();
+  };
+
+  const { amount, currency } = amountDue;
+  const formattedAmount = formatCurrency("de-DE", Math.abs(amount), currency);
 
   return (
     <Dialog.Root placement={"center"}>
@@ -62,7 +88,7 @@ const SettleDialog: FC<SettleDialogProps> = ({
             <Dialog.Footer>
               <VStack w={"full"}>
                 <Dialog.ActionTrigger asChild>
-                  <Button w={"xs"}>
+                  <Button w={"xs"} onClick={handlePayment}>
                     I have paid {formattedAmount} to {receiver}.
                   </Button>
                 </Dialog.ActionTrigger>
@@ -83,11 +109,15 @@ const SettleDialog: FC<SettleDialogProps> = ({
 type AppBarProps = {
   payButtonDisabled: boolean;
   amountDue: { amount: number; currency: Currency };
+  affectedDisbursementIds: string[];
 };
 const TallyAppBar: FC<AppBarProps> = ({
   payButtonDisabled,
   amountDue,
+  affectedDisbursementIds,
 }) => {
+  const { otherUserId } = useParams<{ otherUserId: string }>();
+
   const person = "Miro";
 
   return (
@@ -95,14 +125,18 @@ const TallyAppBar: FC<AppBarProps> = ({
       <Heading>Yours and {person}&apos;s tally</Heading>
 
       <HStack>
-        <SettleDialog amountDue={amountDue} receiver={"Miro"}>
+        <SettleDialog
+          amountDue={amountDue}
+          receiver={"Miro"}
+          affectedDisbursementIds={affectedDisbursementIds}
+        >
           <IconButton variant={"outline"} disabled={payButtonDisabled}>
             <LuScale />
           </IconButton>
         </SettleDialog>
 
         <IconButton asChild variant={"outline"}>
-          <Link href={"/in/bills/new"}>
+          <Link href={`/in/${otherUserId}/bills/new`}>
             <LuPlus />
           </Link>
         </IconButton>

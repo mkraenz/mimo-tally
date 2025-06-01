@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 import mimoEnv from "./src/app/lib/environment";
+import mimoClientEnv from "./src/app/lib/environmentClient";
 
-mimoEnv; // this enforces env var validation at build time
+// enforce env var validation at build time
+mimoEnv;
+mimoClientEnv;
 
 const nextConfig: NextConfig = {
   experimental: {

@@ -1,104 +1,115 @@
-# Features
+# MiMos Tally
 
-## Must have
+My app is about being able to create and track disbursements with your clients. What are important terms connected to this in the domain?
 
-- [x] email sending on submit
+GitHub Copilot
+In the domain of creating and tracking disbursements with clients, the following terms are important:
 
-## Nice-o-matico
+1. Disbursement
+   A payment or transfer of funds from one party (sender) to another (receiver).
+   Can represent bills, refunds, or payments for services/products.
+2. Client
+   The party with whom the disbursement is associated.
+   Could be a customer, vendor, or partner.
+3. Settlement
+   The process of reconciling or clearing outstanding disbursements.
+   Often involves grouping multiple disbursements into a single payment or adjustment.
+4. Invoice
+   A document or record detailing the amount owed by a client.
+   May be linked to disbursements for tracking purposes.
+5. Payment
+   The act of fulfilling a disbursement or settling an invoice.
+   Tracks whether a disbursement has been paid or remains unpaid.
+6. Outstanding Balance
+   The total amount owed by a client that has not yet been settled.
+   Calculated by summing unpaid disbursements.
+7. Currency
+   The monetary unit in which the disbursement is made (e.g., USD, EUR, JPY).
+   Important for multi-currency support.
+8. Purpose
+   The reason or description for the disbursement (e.g., "Consulting Fee", "Product Refund").
+   Helps categorize and track disbursements.
+9. Due Date
+   The date by which the disbursement must be paid.
+   Helps in tracking overdue payments.
+10. Status
+    Tracks the state of the disbursement (e.g., pending, paid, overdue).
+    Useful for monitoring and reporting.
+11. Audit Trail
+    A record of all actions taken on a disbursement (e.g., creation, updates, payments).
+    Ensures accountability and transparency.
+12. Sender and Receiver
+    Sender: The party initiating the disbursement (e.g., your business).
+    Receiver: The party receiving the funds (e.g., the client).
+13. Reconciliation
+    The process of matching disbursements with payments to ensure all transactions are accounted for.
+14. Disbursement ID
+    A unique identifier for each disbursement.
+    Used for tracking and referencing specific disbursements.
+15. Batch Processing
+    The ability to process multiple disbursements at once (e.g., bulk payments or settlements).
+    These terms form the foundation of a system designed to manage and track disbursements effectively.
 
-- [ ] cards for _True_ Full Stack - Product, Frontend, Mobile, Backend, DevOps & Infrastructure
-- [x] color code techs
-- [x] filterable techs
-- [x] animations
+## BLABLA
 
-## Nice-to-have
+database
+offline available and usable
+sync once online
 
-- [x] (fuzzy) searchable techs - if fuse.js then only via dynamic import
-- [ ] hover over technology chip to see where I used the technology
+IndexedDB
+when online sync to ???
 
-## Finding a good heading
+Postgres + NextJS
 
-Hi ChatGPT, I am a freelance full stack engineer looking for catch phrases. The phrases should appeal to management as well as technical staff of my potential customers.
+Offline features:
 
-My focus is on bridging and overcoming the gap between product and engineering, including frontend, backend, and infrastructure as well as DevOps challenges.
+- add a bill
+- settle tally
 
-I am deeply devoted to sustainability and a peaceful, more just world.
-
-I have the following phrases already
-
-- "Product & Engineering Unified"
-- "Bridging the gap between product vision and engineering execution."
-- "Overcome the gap between product vision and engineering execution."
-- "Where product strategy meets technical excellence."
-- "Bridging product innovation and engineering efficiency."
-- "Building the bridge between product vision and technical delivery."
-- "From concept to code: bridging product and engineering."
-- "From concept to customer value: bridging product, engineering. and beyond."
-- "Transforming product vision into engineering-driven customer success."
-- "Building solutions that turn product strategy into customer value."
-- "Bridging product and engineering to create real value for customers."
-- "Where strategic vision meets engineering precision to delight customers."
-- "Bridging the gap between product goals and engineering to deliver unmatched customer value."
-
-Unfortunately, these feel slightly unpersonal and corporate. My current catch phrase is a delightful and casual "Awesomeness for your webapp". Give me 10 more phrases that feel more personal and intimate, and transfer individual character.
-
-Please help me refine these by providing 10 more catch phrases with the message, values, and target audience in mind.
-
-### without sustainability
-
-- - "Delivering customer value through aligned product and engineering excellence."
-- "Transforming product vision into engineering-driven customer success."
-- "Building solutions that align product strategy with customer value."
-- - "Empowering teams to turn innovation into impactful customer experiences."
-- "Bridging product and engineering to create real value for customers."
-- "Where strategic vision meets engineering precision to delight customers."
-- "Aligning product innovation with engineering execution to maximize customer impact."
-- - "Delivering scalable solutions that drive customer value through seamless collaboration."
-- - "Turning customer-centric ideas into engineering-driven success."
-- "Bridging the gap between product goals and engineering to deliver unmatched customer value."
-
-### with sustainability
-
-- "Empowering product vision with engineering excellence for a sustainable future."
-- "Connecting product innovation with technical precision for lasting impact."
-- "Driving product success through engineering solutions that deliver sustainable value."
-- "Creating seamless synergy between product strategy and engineering execution."
-- "Building a future where product vision and technical solutions work in harmony."
-- "Transforming product ideas into sustainable engineering solutions that scale."
-- "Engineering a better tomorrow, where product and tech align for good."
-- "Turning product dreams into engineering realities with sustainability at the core."
-- "Fostering collaboration between product visionaries and engineering experts for lasting change."
-- "From innovation to execution: delivering sustainable solutions that drive real-world impact."
-
-These feel slightly unpersonal and corporate. My current catch phrase is a delightful and casual "Awesomeness for your webapp". Give me 10 more phrases that feel more personal and intimate, and transfer individual character.
-
-### with character
-
-- "Crafting tech solutions that bring your product dreams to life."
-- "Where your product dreams meet my engineering heart."
-- "Turning your vision into reality, one line of code at a time."
-- "Building connections between your ideas and seamless technology."
-- "Empowering your journey from vision to vibrant web experience."
-- "Let’s transform your ideas into code with care, creativity, and purpose."
-- "Bridging the gap with love for your product and the planet."
-- "Sustainable tech for a brighter future, powered by your vision."
-- "Making your product shine through thoughtful engineering."
-- "Together, let's create web experiences that matter."
+SQL Schema
 
 ```ts
-  headingOriginal: "Awesomeness for your Web\u00A0App",
-  headingv2: "Bridging the software gap",
-  headingv36: "Product & Engineering Reunited",
-  headingv35: "Product & Engineering Reunified",
-  headingv34: "Product & Engineering Unified",
-  headingv33: "Product and Engineering united",
-  headingv32: "Wholesome Software Product Engineering",
-  headingv31: "Product and Engineering in Harmony", // no, sounds too much of conflict
-  headingv4: "Aligning Product and Engineering",
+type BaseEntity = {
+  id: string;
+  createdAt: Date;
+};
+
+type Invoice = BaseEntity & {
+  amount: number; // always a positive number
+  currency: string; // EUR or JPY
+  purpose: string;
+
+  /** the date on which this invoice was paid, or null if it is still pending */
+  settledAt: Date | null;
+
+  /** the person who sent the invoice and requests to be paid */
+  senderId: ClerkUserId;
+  /** the person supposed to pay the invoice */
+  responsiblePartyId: ClerkUserId;
+};
+type Settlement = BaseEntity & {
+  amount: number;
+  currency: string;
+  /** the person paying */
+  responsiblePartyId: ClerkUserId;
+  /** the person receiving payment */
+  recipientId: ClerkUserId;
+  /** list of invoices that are being settled by this payment */
+  settledInvoiceIds: InvoiceId[];
+};
 ```
 
-## Inspirations
+ClerkUserId
+Sender
+Receiver
+Bill
+Settlement
 
-- case study section of [rammaheshwari](https://www.rammaheshwari.com/)
-- <https://www.onyedika.xyz/>
-- <https://tamalsen.dev/>
+- get all unpaid bills
+- get all bills created after some point in time (limit 100) ordered by createdAt newest-first
+- delete a bill
+- (get historic bills)
+- create a bill
+- create a settlement + update referenced bills
+
+- connect to another user -> search for the user by email in Clerk, then create
